@@ -1,12 +1,8 @@
-// index.js
-// where your node app starts
-
-// init project
 var express = require('express');
 var app = express();
 
 
-// so that your API is remotely testable by FCC 
+
 var cors = require('cors');
 app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 204
 
@@ -26,14 +22,7 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:date?", (req,res) => {
   let input = req.params.date;
 
-  /*1.create variable for checking :  
-      a.isValidDate 
-        to check if input is string with valid date format -> 
-        if not valid date, it will return NaN 
-        example : 
-        -valid   : 2015-12-25, 
-        -invalid : 2015-02-31, 1451001600000
-  */
+
   let isValidDate       = Date.parse(input); 
 
   let isValidUnixNumber = /^[0-9]+$/.test(input)
@@ -67,7 +56,7 @@ app.get("/api/:date?", (req,res) => {
   
 });
 
-// listen for requests :)
+
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
